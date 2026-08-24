@@ -51,6 +51,7 @@ function AppInner() {
   const value = useMemo(
     () => ({
       notes,
+      setNotes,
       workers,
       setWorkers,
       wizard,

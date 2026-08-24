@@ -26,7 +26,7 @@ export default function People() {
     <div className="page">
       {notes && (
         <Presenter>
-          Same People table for contractors, EOR, and payroll. Filter “At risk” to land the Brazil story without hopping products.
+          Same People table for contractors, EOR, and payroll. Engagement type is a filter, not a product hop.
         </Presenter>
       )}
       <p className="h1">People</p>

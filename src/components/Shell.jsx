@@ -107,6 +107,7 @@ export default function Shell({ children, notes, setNotes }) {
   const { role, applyPlay } = useApp()
   const convertActive = loc.pathname.startsWith('/convert') || loc.pathname.startsWith('/conversion')
   const who = role === 'tm' ? { name: 'Ana Oliveira', role: 'EoR Team Member · Brazil' } : COMPANY.admin
+  const homeView = loc.pathname === '/' && role !== 'tm'
   return (
     <div className="app">
       <a className="skip" href="#main">Skip to content</a>
@@ -163,7 +164,8 @@ export default function Shell({ children, notes, setNotes }) {
           </div>
         </div>
       </aside>
-      <div className="main">
+      <div className={`main ${homeView ? 'main-home' : ''}`}>
+        {!homeView && (
         <header className="topbar">
           <div className="search">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
@@ -184,11 +186,12 @@ export default function Shell({ children, notes, setNotes }) {
             <button className={`btn btn-ghost btn-sm ${notes ? 'btn-mint' : ''}`} onClick={() => setNotes((v) => !v)}>
               {notes ? 'Presenter on' : 'Presenter notes'}
             </button>
-            <NavLink to="/compliance" className="btn btn-coral btn-sm">
-              Brazil · {COMPANY.daysLeft}d
+            <NavLink to="/compliance" className="btn btn-ghost btn-sm">
+              10 at risk
             </NavLink>
           </div>
         </header>
+        )}
         <main id="main">{children}</main>
         <WalkBar />
       </div>

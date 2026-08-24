@@ -46,17 +46,17 @@ export default function Hire() {
   const { notes, hires, setHires } = useApp()
   const nav = useNavigate()
   const [step, setStep] = useState(0)
-  const [country, setCountry] = useState('Brazil')
+  const [country, setCountry] = useState('United States')
   const [hours, setHours] = useState(40)
   const [exclusive, setExclusive] = useState(true)
   const [tools, setTools] = useState(true)
-  const [name, setName] = useState('Rafael Mendes')
-  const [email, setEmail] = useState('rafael.mendes@gmail.com')
+  const [name, setName] = useState('Jordan Hale')
+  const [email, setEmail] = useState('jordan.hale@gmail.com')
   const [role, setRole] = useState('Software Engineer')
-  const [city, setCity] = useState('São Paulo')
+  const [city, setCity] = useState('Austin')
   const [start, setStart] = useState('2026-09-15')
   const [manager, setManager] = useState('Noah Kim')
-  const [base, setBase] = useState(14000)
+  const [base, setBase] = useState(145000)
   const [created, setCreated] = useState(null)
 
   const g = COUNTRY_GUIDES[country]
@@ -111,11 +111,11 @@ export default function Hire() {
     <div className="page">
       {notes && (
         <Presenter>
-          This is a net-new hire, not a conversion. Brazil + 40h still comes out EOR / CLT. Walk Country → Candidate → Local terms → Cost → Send. Then open People.
+          Net-new hire. Country first — US with an entity lands on payroll; a country with no entity lands on EOR. Conversion of existing contractors is a different journey.
         </Presenter>
       )}
       <p className="h1">Hire someone</p>
-      <p className="lede">Pick the country first. Engagement type is an output. Conversion of the existing 10 is a different journey.</p>
+      <p className="lede">Pick the country first. Engagement type is an output of hours, exclusivity, and whether you have an entity there.</p>
 
       <div className="wizard">
         <div className="card wizard-nav">
@@ -136,7 +136,7 @@ export default function Hire() {
             ))}
           </div>
           <p className="muted" style={{ marginTop: 12 }}>
-            Already have 10 in Brazil on PJ? <Link to="/convert">Convert them.</Link>
+            Converting people already on file? <Link to="/convert">Open conversion.</Link>
           </p>
         </div>
 
