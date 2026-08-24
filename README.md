@@ -2,7 +2,9 @@
 
 Interview case study prototype for **Senior Director of Product, EOR**. Not affiliated with Oyster. Fictional customer: Lumina Labs. Fictional Brazil 30-day contractor → EOR conversion.
 
-**Live demo:** https://prachister-1.github.io/oyster-hr-prototype/
+**Live demo:** after the first `gh-pages` publish, https://prachister-1.github.io/oyster-hr-prototype/
+
+If that URL 404s, open the repo → **Settings → Pages → Deploy from branch `gh-pages` / root**.
 
 This repo is only the Oyster interview prototype. It is **not** Room Readiness (`room-readiness-coordinator`) and **not** TravelXen (`travelxen-consultant-prototype`).
 
