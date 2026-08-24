@@ -20,7 +20,7 @@ function greeting() {
 }
 
 export default function Home() {
-  const { notes, launched, workers, hires, setNotes, applyPlay, role } = useApp()
+  const { notes, launched, workers, hires, setNotes, role, setRole } = useApp()
   const nav = useNavigate()
   const [view, setView] = useState('overview')
   const [mix, setMix] = useState('all')
@@ -116,10 +116,10 @@ export default function Home() {
               )}
             </label>
             <div className="roles roles-hero">
-              <button className={role === 'admin' ? 'on' : ''} onClick={() => applyPlay(0)} type="button">
+              <button className={role === 'admin' ? 'on' : ''} onClick={() => { setRole('admin'); nav('/') }} type="button">
                 Admin
               </button>
-              <button className={role === 'tm' ? 'on' : ''} onClick={() => applyPlay(11)} type="button">
+              <button className={role === 'tm' ? 'on' : ''} onClick={() => { setRole('tm'); nav('/me') }} type="button">
                 Team member
               </button>
             </div>

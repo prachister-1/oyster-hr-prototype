@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { COMPANY } from '../data'
 import { FLOW } from '../flow'
 import { useApp } from '../state'
@@ -96,7 +96,7 @@ function WalkBar() {
         {play >= FLOW.length - 1 ? 'Done' : 'Next'}
       </button>
       <button className="btn btn-ghost btn-sm" onClick={() => applyPlay(0)}>
-        Map
+        Walk map
       </button>
     </nav>
   )
@@ -104,7 +104,8 @@ function WalkBar() {
 
 export default function Shell({ children, notes, setNotes }) {
   const loc = useLocation()
-  const { role, applyPlay } = useApp()
+  const nav = useNavigate()
+  const { role, applyPlay, setRole } = useApp()
   const convertActive = loc.pathname.startsWith('/convert') || loc.pathname.startsWith('/conversion')
   const who = role === 'tm' ? { name: 'Ana Oliveira', role: 'EoR Team Member · Brazil' } : COMPANY.admin
   const homeView = loc.pathname === '/' && role !== 'tm'
@@ -133,7 +134,6 @@ export default function Shell({ children, notes, setNotes }) {
         ) : (
           <nav className="nav" aria-label="Company">
             <div className="nav-label">Workforce</div>
-            <Item to="/flow" icon={I.shield} label="Full flow" />
             <Item to="/" icon={I.home} label="Home" />
             <Item to="/hire" icon={I.hire} label="Hire" />
             <Item to="/people" icon={I.people} label="People" />
@@ -176,10 +176,10 @@ export default function Shell({ children, notes, setNotes }) {
           </div>
           <div className="top-actions">
             <div className="roles">
-              <button className={role === 'admin' ? 'on' : ''} onClick={() => applyPlay(0)} type="button">
+              <button className={role === 'admin' ? 'on' : ''} onClick={() => { setRole('admin'); nav('/') }} type="button">
                 Company admin
               </button>
-              <button className={role === 'tm' ? 'on' : ''} onClick={() => applyPlay(11)} type="button">
+              <button className={role === 'tm' ? 'on' : ''} onClick={() => { setRole('tm'); nav('/me') }} type="button">
                 Team member
               </button>
             </div>
