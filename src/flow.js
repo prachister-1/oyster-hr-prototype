@@ -1,0 +1,33 @@
+export const FLOW = [
+  { path: '/flow', role: 'admin', title: 'Full map', who: 'Overview', lane: 'map' },
+  { path: '/convert', wizard: 0, role: 'admin', title: '1. Scope the 10', who: 'Admin', lane: 'convert' },
+  { path: '/convert', wizard: 1, role: 'admin', title: '2. Classify', who: 'Admin', lane: 'convert' },
+  { path: '/convert', wizard: 2, role: 'admin', title: '3. Compensation', who: 'Admin', lane: 'convert' },
+  { path: '/convert', wizard: 3, role: 'admin', title: '4. Exceptions', who: 'Admin + humans', lane: 'convert' },
+  { path: '/convert', wizard: 4, role: 'admin', title: '5. CLT contracts', who: 'Admin', lane: 'convert' },
+  { path: '/convert', wizard: 5, role: 'admin', title: '6. Worker consent', who: 'Admin', lane: 'convert' },
+  { path: '/convert', wizard: 6, role: 'admin', title: '7. Payroll lock', who: 'Admin', lane: 'convert' },
+  { path: '/convert', wizard: 7, role: 'admin', title: '8. Launch', who: 'Admin', lane: 'convert' },
+  { path: '/lifecycle/progress', role: 'admin', title: '9. Hiring progress', who: 'Admin', lane: 'onboard' },
+  { path: '/lifecycle/setup', role: 'admin', title: '10. Assisted Setup', who: 'Admin + Oyster', lane: 'onboard' },
+  { path: '/me', role: 'tm', title: '11. Ana invited', who: 'Team member', lane: 'onboard' },
+  { path: '/me/docs', role: 'tm', title: '12. Ana uploads docs', who: 'Team member', lane: 'onboard' },
+  { path: '/lifecycle/deposit', role: 'admin', title: '13. Pay deposit', who: 'Admin', lane: 'onboard' },
+  { path: '/lifecycle/agreements', role: 'admin', title: '14. Company signs SA', who: 'Admin', lane: 'onboard' },
+  { path: '/me/sign', role: 'tm', title: '15. Ana signs CLT', who: 'Team member', lane: 'onboard' },
+  { path: '/people/br-01', role: 'admin', title: '16. Engaged', who: 'Admin', lane: 'run' },
+  { path: '/me/pay', role: 'tm', title: '17. Ana’s tools', who: 'Team member', lane: 'run' },
+  { path: '/payroll', role: 'admin', title: '18. Payroll run', who: 'Admin', lane: 'run' },
+  { path: '/invoices', role: 'admin', title: '19. Pay Oyster', who: 'Admin', lane: 'run' },
+  { path: '/changes', role: 'admin', title: '20. Bonus / change', who: 'Admin', lane: 'run' },
+  { path: '/time-off', role: 'admin', title: '21. Time off', who: 'Admin', lane: 'run' },
+  { path: '/expenses', role: 'admin', title: '22. Expenses', who: 'Admin', lane: 'run' },
+  { path: '/lifecycle/offboard', role: 'admin', title: '23. Offboard', who: 'Admin + Oyster', lane: 'exit' },
+]
+
+export const LANES = [
+  { id: 'convert', label: 'A · Convert PJ → EoR', from: 1, to: 9 },
+  { id: 'onboard', label: 'B · Land in the EoR machine', from: 9, to: 16 },
+  { id: 'run', label: 'C · Run the employment', from: 16, to: 23 },
+  { id: 'exit', label: 'D · Exit', from: 23, to: 24 },
+]
