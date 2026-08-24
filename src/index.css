@@ -768,25 +768,6 @@ button { cursor: pointer; }
   font-weight: 700;
 }
 .roles button.on { background: var(--ocean); color: #fff; }
-.flow-block { margin-bottom: 14px; }
-.flow-lane {
-  display: flex;
-  gap: 8px;
-  overflow: auto;
-  padding-bottom: 4px;
-}
-.flow-box {
-  min-width: 148px;
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 10px;
-  cursor: pointer;
-  text-align: left;
-}
-.flow-box:hover, .flow-box.now { border-color: var(--ocean); background: #f3f8fa; }
-.flow-box b { display: block; font-size: 12.5px; }
-.flow-box small { display: block; color: var(--ink-3); font-size: 11px; margin-top: 4px; }
 
 .main { display: flex; flex-direction: column; min-height: 100vh; }
 .main .page { flex: 1; }

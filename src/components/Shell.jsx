@@ -95,9 +95,6 @@ function WalkBar() {
       <button className="btn btn-mint btn-sm" disabled={play >= FLOW.length - 1} onClick={() => applyPlay(play + 1)}>
         {play >= FLOW.length - 1 ? 'Done' : 'Next'}
       </button>
-      <button className="btn btn-ghost btn-sm" onClick={() => applyPlay(0)}>
-        Walk map
-      </button>
     </nav>
   )
 }

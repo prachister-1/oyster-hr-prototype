@@ -1,5 +1,5 @@
 export const FLOW = [
-  { path: '/flow', role: 'admin', title: 'Full map', who: 'Overview', lane: 'map' },
+  { path: '/', role: 'admin', title: 'Home', who: 'Admin', lane: 'map' },
   { path: '/convert', wizard: 0, role: 'admin', title: '1. Scope the 10', who: 'Admin', lane: 'convert' },
   { path: '/convert', wizard: 1, role: 'admin', title: '2. Classify', who: 'Admin', lane: 'convert' },
   { path: '/convert', wizard: 2, role: 'admin', title: '3. Compensation', who: 'Admin', lane: 'convert' },
@@ -23,11 +23,4 @@ export const FLOW = [
   { path: '/time-off', role: 'admin', title: '21. Time off', who: 'Admin', lane: 'run' },
   { path: '/expenses', role: 'admin', title: '22. Expenses', who: 'Admin', lane: 'run' },
   { path: '/lifecycle/offboard', role: 'admin', title: '23. Offboard', who: 'Admin + Oyster', lane: 'exit' },
-]
-
-export const LANES = [
-  { id: 'convert', label: 'A · Convert PJ → EoR', from: 1, to: 9 },
-  { id: 'onboard', label: 'B · Land in the EoR machine', from: 9, to: 16 },
-  { id: 'run', label: 'C · Run the employment', from: 16, to: 23 },
-  { id: 'exit', label: 'D · Exit', from: 23, to: 24 },
 ]

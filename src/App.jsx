@@ -17,7 +17,6 @@ import Compliance from './pages/Compliance'
 import Convert from './pages/Convert'
 import Conversion from './pages/Conversion'
 import Ops from './pages/Ops'
-import Flow from './pages/Flow'
 import Lifecycle from './pages/Lifecycle'
 import TeamMember from './pages/TeamMember'
 import Changes from './pages/Changes'
@@ -73,7 +72,6 @@ function AppInner() {
       <Shell notes={notes} setNotes={setNotes}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/flow" element={<Flow />} />
           <Route path="/people" element={<People />} />
           <Route path="/people/:id" element={<Person />} />
           <Route path="/hire" element={<Hire />} />
