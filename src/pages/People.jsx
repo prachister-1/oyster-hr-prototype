@@ -1,8 +1,9 @@
 import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { allPeople } from '../data'
+import { personAi } from '../ai'
 import { useApp } from '../state'
-import { Avatar, Presenter, StatusBadge, TypeBadge } from '../components/ui'
+import { AiRec, Avatar, Presenter, StatusBadge, TypeBadge } from '../components/ui'
 
 export default function People() {
   const { notes, workers, hires } = useApp()
@@ -31,6 +32,15 @@ export default function People() {
       )}
       <p className="h1">People</p>
       <p className="lede">One worker record. Engagement type is an attribute, not a separate product silo.</p>
+      {tab === 'risk' && (
+        <AiRec
+          title="10 Brazil PJ contractors look like employment"
+          body="Exclusive hours, Lumina managers, Lumina tools. India contractors are a watch list — not a 30-day case yet."
+          next="Open a person for the next-best-action on that record, or run the Brazil conversion."
+          human="Country Expert only on Gabriela, João, and any India score that is ambiguous."
+          tags={['risk flagging', 'next-best-action']}
+        />
+      )}
       <div className="tabs">
         {[
           ['all', 'All'],
@@ -56,11 +66,14 @@ export default function People() {
               <th>Country</th>
               <th>Engagement</th>
               <th>Status</th>
+              <th>AI</th>
               <th>Start</th>
             </tr>
           </thead>
           <tbody>
-            {rows.map((p) => (
+            {rows.map((p) => {
+              const line = personAi(p, { converted: p.type === 'eor' && p.status === 'converted' })?.line
+              return (
               <tr key={p.id} className="click" onClick={() => nav(`/people/${p.id}`)}>
                 <td>
                   <div className="person">
@@ -81,9 +94,11 @@ export default function People() {
                 <td>
                   <StatusBadge status={p.displayStatus || p.status} />
                 </td>
+                <td className="muted">{line || '—'}</td>
                 <td>{p.start}</td>
               </tr>
-            ))}
+              )
+            })}
           </tbody>
         </table>
       </div>

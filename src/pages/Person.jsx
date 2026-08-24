@@ -1,7 +1,8 @@
 import { Link, useParams } from 'react-router-dom'
 import { allPeople, BRAZIL_CONTRACTORS } from '../data'
+import { personAi } from '../ai'
 import { useApp } from '../state'
-import { Avatar, Btn, Money, Presenter, StatusBadge, TypeBadge } from '../components/ui'
+import { AiRec, Avatar, Btn, Money, Presenter, StatusBadge, TypeBadge } from '../components/ui'
 import HrisStrip from '../components/HrisStrip'
 
 function Eras({ p, converted }) {
@@ -110,6 +111,7 @@ export default function Person() {
   const type = converted ? 'eor' : p.type || 'contractor'
   const brazil = (p.country || 'Brazil') === 'Brazil' && !!p.invoice
   const isNewHire = p.hireKind === 'new'
+  const rec = personAi(p, { converted })
 
   return (
     <div className="page">
@@ -143,6 +145,9 @@ export default function Person() {
           <Link to="/lifecycle/offboard" className="btn btn-coral">Offboarding tab</Link>
         )}
       </div>
+      {rec && (
+        <AiRec title={rec.title} body={rec.body} next={rec.next} human={rec.human} tags={rec.tags} />
+      )}
       <div className="grid grid-sidebar">
         <div>
           <div className="card">

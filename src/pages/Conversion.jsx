@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { COMPANY } from '../data'
 import { useApp } from '../state'
-import { Avatar, Presenter, StatusBadge } from '../components/ui'
+import { AiRec, Avatar, Presenter, StatusBadge } from '../components/ui'
 
 const LANES = [
   { id: 'auto', title: 'Product automation', items: ['Case opened from country-rule feed', 'Analyser scored 10/10 as EOR', 'CLT packages priced', '8 contracts generated', 'HRIS type-flip queued'] },
@@ -20,7 +20,7 @@ export default function Conversion() {
     <div className="page">
       {notes && (
         <Presenter>
-          This is the slide-9 journey, live. Swimlanes show who owns each beat. Click a worker to the person record.
+          Command center for the 30-day conversion. AI next-best-action sits at the top. Swimlanes show who still has to touch the case.
         </Presenter>
       )}
       <div className="row" style={{ justifyContent: 'space-between' }}>
@@ -30,6 +30,14 @@ export default function Conversion() {
         </div>
         <Link to="/convert" className="btn btn-ghost">Open wizard</Link>
       </div>
+
+      <AiRec
+        title="Convert 8 on the standard path. Hold Diego and João."
+        body="Eligibility already ran. Straight-through rate is 8/10. Timing risk: the two exceptions miss 30 Sep if briefs slip — they must not stay on PJ after 21 Sep."
+        next="Priya launches the eight. Legal takes Diego. Marina re-verifies João. Support confirms Gabriela’s 32h with Priya — she is not auto-converted."
+        human="Legal, Country Expert, Payroll, and Support only on the exception path."
+        tags={['next-best-action', 'risk flagging', 'routing']}
+      />
 
       <div className="grid grid-4" style={{ marginBottom: 14 }}>
         <div className="card stat">

@@ -1,6 +1,6 @@
 import { PAYROLL_RUNS } from '../data'
 import { useApp } from '../state'
-import { Presenter, StatusBadge } from '../components/ui'
+import { AiRec, Presenter, StatusBadge } from '../components/ui'
 
 export default function Payroll() {
   const { notes, launched } = useApp()
@@ -13,6 +13,17 @@ export default function Payroll() {
       )}
       <p className="h1">Payroll</p>
       <p className="lede">One calendar for EOR, own-entity payroll, and contractor payouts.</p>
+      <AiRec
+        title={launched
+          ? '8 Brazil seats are on the 30 Sep EOR run. 2 are not.'
+          : 'Lock 8 seats on 30 Sep. Do not pay Diego or João as PJ after 21 Sep.'}
+        body="Last contractor payout 5 Sep. First CLT 30 Sep. AI checked cut-offs — it does not change statutory pay. Timing risk sits on the two exception seats."
+        next={launched
+          ? 'Payroll confirms the eight. Wave-2 CLT for Diego and João when briefs close.'
+          : 'Finance funds the deposit. Payroll confirms the 15th cut-off before go-live.'}
+        human="Payroll / Ops confirm dates. Finance if pre-funding is late."
+        tags={['validation', 'risk flagging']}
+      />
       <div className="card pad-0">
         <table className="table">
           <thead>

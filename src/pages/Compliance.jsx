@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { COMPANY, DISCOVERY } from '../data'
 import { useApp } from '../state'
-import { Presenter } from '../components/ui'
+import { Presenter, AiRec } from '../components/ui'
 
 export default function Compliance() {
   const { notes, workers } = useApp()
@@ -15,6 +15,13 @@ export default function Compliance() {
       )}
       <p className="h1">Compliance</p>
       <p className="lede">Live risk on the workforce, plus the discovery path behind the Brazil conversion.</p>
+      <AiRec
+        title="Brazil is the open case. India is next to score — not a second war room."
+        body="10 Brazil PJ contractors are a 30-day conversion. Three India contractors are exclusive product work with no entity on file. Mexico is a watch. AI ranks pockets; it does not open a case without a trigger."
+        next="Run Brazil conversion now. After launch, score India contractors before SOW renewal."
+        human="Country Expert BR on exceptions. India expert only if eligibility is ambiguous."
+        tags={['risk flagging', 'next-best-action']}
+      />
 
       <div className="grid grid-4" style={{ marginBottom: 14 }}>
         <div className="card stat">

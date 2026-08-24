@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { BRAZIL_CONTRACTORS } from '../data'
 import { useApp } from '../state'
-import { Money, Presenter } from '../components/ui'
+import { Money, Presenter, AiRec } from '../components/ui'
 
 const MIX = {
   eor: { seats: 42, fee: 699, empCostUsd: 412880 },
@@ -31,6 +31,17 @@ export default function Finance() {
       <p className="lede">
         72 people. Fees to Oyster sit next to employment cost. Brazil conversion changes the mix — not the headcount.
       </p>
+      <AiRec
+        title={launched
+          ? 'Mix shifted: 8 seats moved contractor → EOR. Headcount unchanged.'
+          : 'Convert, do not terminate. Fund the deposit before 30 Sep.'}
+        body="True employer cost on the 8 is ~1.75× CLT base plus USD 699. Terminating is cheaper on paper and loses the talent. Entity setup is slower than 30 days."
+        next={launched
+          ? 'Watch first CLT payroll exceptions. Diego and João are still not in the 8.'
+          : 'Approve packages, fund INV-2052, launch the eight. Leave Diego and João on the exception path.'}
+        human="Priya and Finance sign. AI does not change statutory load or invoice math."
+        tags={['case summarisation', 'next-best-action']}
+      />
 
       <div className="grid grid-4" style={{ marginBottom: 14 }}>
         <div className="card stat">

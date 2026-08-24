@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { COUNTRY_GUIDES, HIRE_STEPS } from '../data'
 import { useApp } from '../state'
-import { Btn, Money, Presenter } from '../components/ui'
+import { Btn, Money, Presenter, AiRec } from '../components/ui'
 
 const COUNTRIES = Object.keys(COUNTRY_GUIDES)
 
@@ -12,24 +12,33 @@ function recommend({ country, hours, exclusive, tools }) {
   if (employmentLike && g.entityOnFile) {
     return {
       id: 'payroll',
-      title: 'Own-entity payroll',
-      why: `${country} entity is on file. Exclusive ${hours}h work is employment — hire onto Lumina payroll, not a contractor aisle.`,
+      title: 'Hire onto own-entity payroll',
+      why: `${country} entity is on file. Exclusive ${hours}h work is employment — do not open a contractor aisle.`,
       fee: `USD ${g.feePayroll} / month`,
+      next: `Continue with ${g.legalEmployer} as legal employer.`,
+      human: `${g.expert} only if right-to-work fails.`,
+      tags: ['risk flagging', 'routing'],
     }
   }
   if (employmentLike) {
     return {
       id: 'eor',
-      title: 'Employer of Record',
+      title: 'Hire via Employer of Record',
       why: `No ${country} entity on file. Hours, exclusivity, and tools score as employment. Contractor onboarding is blocked.`,
       fee: `USD ${g.feeEor} / month`,
+      next: `Continue as ${g.employmentName}.`,
+      human: `${g.expert} reviews KYC if docs fail.`,
+      tags: ['risk flagging', 'routing'],
     }
   }
   return {
     id: 'contractor',
     title: 'Contractor may be defensible',
-    why: 'Lower hours and non-exclusive work. Still run the analyser before sending a contract.',
+    why: 'Lower hours and non-exclusive work. Still run eligibility before sending a contract.',
     fee: 'USD 29 / month',
+    next: 'Continue as contractor, with a conversion path if hours later look like employment.',
+    human: 'Country expert if the analyser later flips this to employment.',
+    tags: ['risk flagging'],
   }
 }
 
@@ -168,11 +177,14 @@ export default function Hire() {
                   Uses Lumina tools / reports to a Lumina manager
                 </label>
               </div>
-              <div className={`banner ${rec.id === 'contractor' ? 'banner-info' : 'banner-ok'}`} style={{ marginTop: 16 }}>
-                <div>
-                  <h3>{rec.title}</h3>
-                  <p>{rec.why}</p>
-                </div>
+              <div style={{ marginTop: 16 }}>
+              <AiRec
+                title={rec.title}
+                body={rec.why}
+                next={rec.next}
+                human={rec.human}
+                tags={rec.tags}
+              />
               </div>
               {g.crackdown && rec.id === 'eor' && <p className="note" style={{ marginTop: 12 }}>{g.crackdown}</p>}
               <dl className="kv" style={{ marginTop: 12 }}>

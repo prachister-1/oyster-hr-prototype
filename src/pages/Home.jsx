@@ -1,8 +1,9 @@
 import { useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { allPeople, COUNTRIES, COUNTRY_GUIDES } from '../data'
+import { countryAi } from '../ai'
 import { useApp } from '../state'
-import { Avatar, Presenter, TypeBadge } from '../components/ui'
+import { Avatar, Presenter, TypeBadge, AiRec } from '../components/ui'
 
 const VIEWS = [
   { id: 'overview', label: 'Overview' },
@@ -31,6 +32,7 @@ export default function Home() {
   const converted = workers.filter((w) => w.status === 'converted').length
   const selected = COUNTRIES.find((c) => c.name === country) || COUNTRIES[0]
   const guide = COUNTRY_GUIDES[country]
+  const panelAi = countryAi(selected.name)
   const checklist = [
     {
       id: 'entity',
@@ -203,7 +205,16 @@ export default function Home() {
         )}
 
         {view === 'attention' && (
-          <div className="home-actions home-actions-3">
+          <>
+            <AiRec
+              dark
+              title="Convert 8 on the standard path. Route 2."
+              body="Brazil PJ looks like employment: exclusive hours, Lumina managers, Lumina tools. AI would not re-contract. Gabriela (32h) needs Country Expert. Diego and João fail document gates later."
+              next="Open conversion. Accept EOR for the eight. Do not start from a blank ticket."
+              human="Legal, Country Expert, and Support only on exceptions."
+              tags={['risk flagging', 'next-best-action', 'routing']}
+            />
+            <div className="home-actions home-actions-3">
             <button type="button" className="home-tile home-tile-alert" onClick={() => { setCountry('Brazil'); setView('overview') }}>
               <span className="home-tile-k">Brazil</span>
               <strong>10 PJ contractors flagged</strong>
@@ -223,6 +234,7 @@ export default function Home() {
               <span className="home-tile-go">Conversion flow</span>
             </button>
           </div>
+          </>
         )}
 
         {view === 'mix' && (
@@ -307,13 +319,10 @@ export default function Home() {
                   <b>{selected.payroll}</b>
                 </button>
               </div>
-              {guide && (
-                <p className="note" style={{ marginTop: 12 }}>
-                  {guide.entityOnFile
-                    ? `${selected.name} entity on file. Exclusive work can go onto Lumina payroll.`
-                    : `No ${selected.name} entity on file. Employment-like work recommends EOR.`}
-                  {selected.name === 'Brazil' ? ' Existing PJ contractors can convert from Needs review.' : ''}
-                </p>
+              {panelAi && (
+                <div style={{ marginTop: 12 }}>
+                  <AiRec title={panelAi.title} body={panelAi.body} next={panelAi.next} human={panelAi.human} tags={panelAi.tags} />
+                </div>
               )}
               <div className="country-people">
                 {inCountry.slice(0, 5).map((p) => (

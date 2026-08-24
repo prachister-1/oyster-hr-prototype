@@ -62,3 +62,41 @@ export function Presenter({ children }) {
     </div>
   )
 }
+
+export function AiRec({ title, body, next, human, tags, dark, onAccept, accepted }) {
+  return (
+    <aside className={`ai-rec ${dark ? 'ai-rec-dark' : ''}`}>
+      <div className="ai-rec-top">
+        <span className="ai-rec-k">AI recommendation</span>
+        {tags?.length > 0 && (
+          <span className="ai-tags">
+            {tags.map((t) => (
+              <em key={t}>{t}</em>
+            ))}
+          </span>
+        )}
+      </div>
+      <strong>{title}</strong>
+      {body && <p>{body}</p>}
+      {next && (
+        <p className="ai-next">
+          <b>Next best action.</b> {next}
+        </p>
+      )}
+      {human && (
+        <p className="ai-human">
+          <b>Human steps in.</b> {human}
+        </p>
+      )}
+      {onAccept && (
+        <button
+          type="button"
+          className={`btn btn-sm ${accepted ? 'btn-mint' : dark ? 'btn-ghost-light' : 'btn-ghost'}`}
+          onClick={onAccept}
+        >
+          {accepted ? 'Recommendation accepted' : 'Accept recommendation'}
+        </button>
+      )}
+    </aside>
+  )
+}
